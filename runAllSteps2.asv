@@ -1,0 +1,28 @@
+%% Run all Steps
+% Save their results
+% Compare between results
+function runAllSteps2()
+    % ---------- Run 1 ----------
+    fileName = "OGLE-2008-SMC-001";
+    
+    % Read from OGLE data file
+    [vecDataT, vecDataImag, vecDataSigmaImag, T0, ~, tau, delTau, ...
+        Umin, delUmin, Fbl, ~, Ibl, delIbl] = getDataFromOgle(fileName, ".dat");
+    
+    analyzeIndex = 10;
+    fprintf('Step 1 - 2 Params: Tau, Umin (with analyzeIndex = %i) \n', analyzeIndex);
+    runGetMinChiSquare2ParamsRealData(analyzeIndex, fileName, vecDataT, vecDataImag, vecDataSigmaImag, T0, tau, delTau, Umin, delUmin, Fbl, Ibl, delIbl);
+   
+    % ---------- Run 2 ----------
+    fileName = "OGLE-2008-BLG-005";
+    
+    % Read from OGLE data file
+    [vecDataT, vecDataImag, vecDataSigmaImag, T0, ~, tau, delTau, ...
+        Umin, delUmin, Fbl, ~, Ibl, delIbl] = getDataFromOgle(fileName, ".dat");
+    
+    analyzeIndex = 10;
+    fprintf('Step 1 - 2 Params: Tau, Umin (with analyzeIndex = %i) \n', analyzeIndex);
+    runGetMinChiSquare2ParamsRealData(analyzeIndex, fileName, vecDataT, vecDataImag, vecDataSigmaImag, T0, tau, delTau, Umin, delUmin, Fbl, Ibl, delIbl);
+   
+    fclose('all');
+end
